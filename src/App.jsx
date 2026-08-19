@@ -5,6 +5,8 @@ import TrustIndicators from "./components/home/TrustIndicators";
 import ProblemSolution from "./components/home/ProblemSolution";
 import Services from "./components/home/Services";
 import StormHailSection from "./components/home/StormHailSection";
+import WhyNorthPeak from "./components/home/WhyNorthPeak";
+import HowItWorks from "./components/home/HowItWorks";
 
 function App() {
   return (
@@ -23,6 +25,10 @@ function App() {
         <Services />
 
         <StormHailSection />
+
+        <WhyNorthPeak />
+
+        <HowItWorks />
 
       </main>
     </div>

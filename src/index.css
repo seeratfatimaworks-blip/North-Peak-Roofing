@@ -17,6 +17,9 @@
 
 @import "./components/home/StormHailSection.css";
 
+@import "./components/home/WhyNorthPeak.css";
+@import "./components/home/HowItWorks.css";
+
 :root {
   /* Colors */
   --color-charcoal: #111315;

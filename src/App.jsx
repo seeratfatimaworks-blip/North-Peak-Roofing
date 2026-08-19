@@ -10,6 +10,8 @@ import HowItWorks from "./components/home/HowItWorks";
 import ProjectShowcase from "./components/home/ProjectShowcase";
 import Testimonials from "./components/home/Testimonials";
 import ServiceAreas from "./components/home/ServiceAreas";
+import FAQ from "./components/home/FAQ";
+import FinalCTA from "./components/home/FinalCTA";
 
 function App() {
   return (
@@ -30,14 +32,19 @@ function App() {
         <StormHailSection />
 
         <WhyNorthPeak />
+
         <ProjectShowcase />
+
         <HowItWorks />
-
-
 
         <Testimonials />
 
         <ServiceAreas />
+
+        <FAQ />
+
+        <FinalCTA />
+
       </main>
     </div>
   );

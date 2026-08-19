@@ -26,6 +26,9 @@
 @import "./components/home/Testimonials.css";
 @import "./components/home/ServiceAreas.css";
 
+@import "./components/home/FAQ.css";
+@import "./components/home/FinalCTA.css";
+
 :root {
   /* Colors */
   --color-charcoal: #111315;

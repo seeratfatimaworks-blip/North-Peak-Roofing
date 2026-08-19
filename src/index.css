@@ -8,6 +8,8 @@
 @import "./components/layout/Navbar.css";
 @import "./components/layout/MobileNav.css";
 
+@import "./components/home/Hero.css";
+
 :root {
   /* Colors */
   --color-charcoal: #111315;

@@ -7,6 +7,7 @@ import Services from "./components/home/Services";
 import StormHailSection from "./components/home/StormHailSection";
 import WhyNorthPeak from "./components/home/WhyNorthPeak";
 import HowItWorks from "./components/home/HowItWorks";
+import ProjectShowcase from "./components/home/ProjectShowcase";
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
         <WhyNorthPeak />
 
         <HowItWorks />
+
+        <ProjectShowcase />
 
       </main>
     </div>

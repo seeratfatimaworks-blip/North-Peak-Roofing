@@ -1,0 +1,162 @@
+.before-after {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 16 / 10;
+
+    overflow: hidden;
+
+    background: #292b2b;
+
+    user-select: none;
+}
+
+.before-after__image {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+}
+
+.before-after__image--before {
+    background:
+        linear-gradient(135deg,
+            #353535,
+            #1d1e1e 55%,
+            #41403d);
+}
+
+.before-after__image--after {
+    background:
+        linear-gradient(135deg,
+            #6a6258,
+            #292c2c 50%,
+            #17191a);
+}
+
+.before-after__roof-pattern {
+    position: absolute;
+
+    inset: -20%;
+
+    background:
+        repeating-linear-gradient(165deg,
+            transparent 0,
+            transparent 32px,
+            rgba(255, 255, 255, 0.09) 33px,
+            rgba(255, 255, 255, 0.09) 35px);
+
+    transform: rotate(-4deg);
+}
+
+.before-after__image--after .before-after__roof-pattern {
+    background:
+        repeating-linear-gradient(165deg,
+            transparent 0,
+            transparent 30px,
+            rgba(255, 255, 255, 0.13) 31px,
+            rgba(255, 255, 255, 0.13) 33px);
+}
+
+.before-after__label {
+    position: absolute;
+
+    top: 1.25rem;
+
+    padding: 0.45rem 0.7rem;
+
+    background: rgba(17, 19, 21, 0.85);
+
+    color: white;
+
+    font-size: 0.65rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.before-after__image--before .before-after__label {
+    left: 1.25rem;
+}
+
+.before-after__image--after .before-after__label {
+    right: 1.25rem;
+}
+
+.before-after__divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    width: 2px;
+
+    z-index: 4;
+
+    background: white;
+
+    transform: translateX(-50%);
+
+    pointer-events: none;
+}
+
+.before-after__handle {
+    position: absolute;
+
+    top: 50%;
+
+    z-index: 5;
+
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border: 2px solid white;
+    border-radius: 50%;
+
+    background: var(--color-copper);
+    color: white;
+
+    font-size: 0.9rem;
+
+    transform: translate(-50%, -50%);
+
+    pointer-events: none;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+.before-after__control {
+    position: absolute;
+    inset: 0;
+
+    z-index: 10;
+}
+
+.before-after__control input {
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+
+    opacity: 0;
+
+    cursor: ew-resize;
+}
+
+.before-after__control input:focus-visible {
+    opacity: 1;
+}
+
+@media (max-width: 600px) {
+    .before-after {
+        aspect-ratio: 4 / 3;
+    }
+
+    .before-after__handle {
+        width: 36px;
+        height: 36px;
+    }
+}

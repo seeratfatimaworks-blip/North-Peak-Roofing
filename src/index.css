@@ -20,6 +20,9 @@
 @import "./components/home/WhyNorthPeak.css";
 @import "./components/home/HowItWorks.css";
 
+@import "./components/home/ProjectShowcase.css";
+@import "./components/home/BeforeAfterSlider.css";
+
 :root {
   /* Colors */
   --color-charcoal: #111315;

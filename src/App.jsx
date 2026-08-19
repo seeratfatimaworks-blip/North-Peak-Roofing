@@ -29,10 +29,10 @@ function App() {
 
         <StormHailSection />
 
-        <WhyNorthPeak />
+
 
         <HowItWorks />
-
+        <WhyNorthPeak />
         <ProjectShowcase />
 
         <Testimonials />

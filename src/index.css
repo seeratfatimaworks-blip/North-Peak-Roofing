@@ -29,6 +29,8 @@
 @import "./components/home/FAQ.css";
 @import "./components/home/FinalCTA.css";
 
+@import "./components/home/LeadForm.css";
+
 :root {
   /* Colors */
   --color-charcoal: #111315;

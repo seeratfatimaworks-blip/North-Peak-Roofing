@@ -12,6 +12,7 @@ import Testimonials from "./components/home/Testimonials";
 import ServiceAreas from "./components/home/ServiceAreas";
 import FAQ from "./components/home/FAQ";
 import FinalCTA from "./components/home/FinalCTA";
+import LeadForm from "./components/home/LeadForm";
 
 function App() {
   return (
@@ -42,6 +43,8 @@ function App() {
         <ServiceAreas />
 
         <FAQ />
+
+        <LeadForm />
 
         <FinalCTA />
 

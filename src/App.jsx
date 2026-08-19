@@ -23,22 +23,21 @@ function App() {
 
         <TrustIndicators />
 
-        <ProblemSolution />
-
         <Services />
+
+        <ProblemSolution />
 
         <StormHailSection />
 
         <WhyNorthPeak />
-
+        <ProjectShowcase />
         <HowItWorks />
 
-        <ProjectShowcase />
+
 
         <Testimonials />
 
         <ServiceAreas />
-
       </main>
     </div>
   );

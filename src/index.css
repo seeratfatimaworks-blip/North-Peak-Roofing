@@ -9,6 +9,8 @@
 @import "./components/layout/MobileNav.css";
 
 @import "./components/home/Hero.css";
+@import "./components/home/TrustIndicators.css";
+@import "./components/home/ProblemSolution.css";
 
 :root {
   /* Colors */

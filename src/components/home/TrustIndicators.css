@@ -1,0 +1,111 @@
+.trust-indicators {
+    background: var(--color-warm-white);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.trust-indicators__inner {
+    width: min(100% - (var(--container-padding) * 2),
+            var(--container-width));
+
+    min-height: 130px;
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+}
+
+.trust-indicators__item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    padding-inline: 2rem;
+}
+
+.trust-indicators__item:first-child {
+    padding-left: 0;
+}
+
+.trust-indicators__item:last-child {
+    padding-right: 0;
+}
+
+.trust-indicators__item strong {
+    flex-shrink: 0;
+
+    color: var(--color-charcoal);
+
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+.trust-indicators__item span:not(.trust-indicators__divider) {
+    max-width: 130px;
+
+    color: var(--color-muted);
+
+    font-size: 0.75rem;
+    line-height: 1.45;
+}
+
+.trust-indicators__divider {
+    position: absolute;
+    right: 0;
+
+    width: 1px;
+    height: 42px;
+
+    background: var(--border-light);
+}
+
+@media (max-width: 900px) {
+    .trust-indicators__inner {
+        grid-template-columns: repeat(2, 1fr);
+        padding-block: 1.5rem;
+    }
+
+    .trust-indicators__item {
+        min-height: 70px;
+        padding: 1rem;
+    }
+
+    .trust-indicators__item:first-child {
+        padding-left: 1rem;
+    }
+
+    .trust-indicators__item:last-child {
+        padding-right: 1rem;
+    }
+
+    .trust-indicators__divider {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .trust-indicators__inner {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .trust-indicators__item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+
+        padding: 1rem 0.5rem;
+    }
+
+    .trust-indicators__item strong {
+        font-size: 1.4rem;
+    }
+
+    .trust-indicators__item span:not(.trust-indicators__divider) {
+        max-width: 120px;
+        font-size: 0.7rem;
+    }
+}

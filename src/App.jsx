@@ -1,8 +1,11 @@
+import siteConfig from "./config/siteConfig";
+
 function App() {
   return (
     <main>
-      <h1>My React Project</h1>
-      <p>Project setup is working.</p>
+      <h1>{siteConfig.businessName}</h1>
+      <p>{siteConfig.tagline}</p>
+      <p>Frontend foundation ready.</p>
     </main>
   );
 }

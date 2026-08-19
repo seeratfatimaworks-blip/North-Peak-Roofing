@@ -13,6 +13,8 @@ import ServiceAreas from "./components/home/ServiceAreas";
 import FAQ from "./components/home/FAQ";
 import FinalCTA from "./components/home/FinalCTA";
 import LeadForm from "./components/home/LeadForm";
+import Footer from "./components/layout/Footer";
+import StickyMobileCTA from "./components/layout/StickyMobileCTA";
 
 function App() {
   return (
@@ -49,6 +51,11 @@ function App() {
         <FinalCTA />
 
       </main>
+
+      <Footer />
+
+      <StickyMobileCTA />
+
     </div>
   );
 }

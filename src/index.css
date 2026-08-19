@@ -31,6 +31,9 @@
 
 @import "./components/home/LeadForm.css";
 
+@import "./components/layout/Footer.css";
+@import "./components/layout/StickyMobileCTA.css";
+
 :root {
   /* Colors */
   --color-charcoal: #111315;
@@ -267,5 +270,11 @@ p {
 @media (min-width: 1200px) {
   :root {
     --container-padding: 2.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  body {
+    padding-bottom: 60px;
   }
 }

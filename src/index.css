@@ -15,6 +15,8 @@
 @import "./components/home/Services.css";
 @import "./components/home/ServiceCard.css";
 
+@import "./components/home/StormHailSection.css";
+
 :root {
   /* Colors */
   --color-charcoal: #111315;

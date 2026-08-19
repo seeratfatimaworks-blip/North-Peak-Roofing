@@ -1,0 +1,364 @@
+.storm-hail {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+
+    min-height: 760px;
+
+    background: var(--color-charcoal);
+    color: var(--color-white);
+
+    overflow: hidden;
+}
+
+/* =========================
+   VISUAL
+========================= */
+
+.storm-hail__visual {
+    position: relative;
+
+    min-height: 760px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(145deg,
+            #34312d 0%,
+            #1d2021 48%,
+            #111315 100%);
+}
+
+.storm-hail__visual::before {
+    content: "";
+
+    position: absolute;
+    inset: 12% -20% 10% -10%;
+
+    background:
+        repeating-linear-gradient(165deg,
+            transparent 0,
+            transparent 48px,
+            rgba(255, 255, 255, 0.055) 49px,
+            rgba(255, 255, 255, 0.055) 51px);
+
+    transform: rotate(-2deg);
+}
+
+.storm-hail__visual::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(circle at 50% 50%,
+            rgba(201, 107, 50, 0.16),
+            transparent 35%);
+}
+
+.storm-hail__visual-grid {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0.15;
+
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.08) 1px,
+            transparent 1px);
+
+    background-size: 70px 70px;
+}
+
+.storm-hail__visual-label {
+    position: absolute;
+
+    left: clamp(2rem, 5vw, 5rem);
+    bottom: clamp(2rem, 5vw, 5rem);
+
+    z-index: 3;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.storm-hail__visual-label span {
+    color: rgba(255, 255, 255, 0.45);
+
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+}
+
+.storm-hail__visual-label strong {
+    margin-top: 0.4rem;
+
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.storm-hail__visual-line {
+    position: absolute;
+
+    height: 1px;
+
+    background: rgba(201, 107, 50, 0.65);
+
+    transform-origin: left center;
+}
+
+.storm-hail__visual-line--one {
+    width: 70%;
+
+    top: 30%;
+    left: 15%;
+
+    transform: rotate(-18deg);
+}
+
+.storm-hail__visual-line--two {
+    width: 50%;
+
+    top: 47%;
+    left: 30%;
+
+    transform: rotate(-18deg);
+}
+
+.storm-hail__visual-line--three {
+    width: 35%;
+
+    top: 64%;
+    left: 42%;
+
+    transform: rotate(-18deg);
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.storm-hail__content {
+    align-self: center;
+
+    max-width: 760px;
+
+    padding: clamp(4rem, 8vw, 8rem) clamp(2rem, 7vw, 7rem);
+}
+
+.storm-hail__heading {
+    max-width: 650px;
+}
+
+.storm-hail__heading .eyebrow {
+    color: #e6a273;
+}
+
+.storm-hail__heading h2 {
+    margin-top: 1.25rem;
+
+    color: var(--color-white);
+}
+
+.storm-hail__heading>p {
+    max-width: 590px;
+
+    margin-top: 1.5rem;
+
+    color: rgba(255, 255, 255, 0.62);
+
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.storm-hail__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 1.5rem;
+
+    margin-top: 2rem;
+}
+
+.storm-hail__secondary-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    transition:
+        color var(--transition-fast),
+        gap var(--transition-fast);
+}
+
+.storm-hail__secondary-link:hover {
+    color: var(--color-white);
+    gap: 0.75rem;
+}
+
+/* =========================
+   DAMAGE LIST
+========================= */
+
+.storm-hail__damage-list {
+    margin-top: 4rem;
+}
+
+.storm-hail__damage {
+    display: grid;
+    grid-template-columns: 45px 1fr;
+
+    gap: 1rem;
+
+    padding-block: 1.35rem;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.storm-hail__damage:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.storm-hail__number {
+    color: #e6a273;
+
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.storm-hail__damage h3 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.storm-hail__damage p {
+    max-width: 500px;
+
+    margin-top: 0.35rem;
+
+    color: rgba(255, 255, 255, 0.5);
+
+    font-size: 0.8rem;
+    line-height: 1.65;
+}
+
+/* =========================
+   NOTICE
+========================= */
+
+.storm-hail__notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    margin-top: 2rem;
+
+    padding: 1.25rem;
+
+    border: 1px solid rgba(201, 107, 50, 0.3);
+
+    background: rgba(201, 107, 50, 0.08);
+}
+
+.storm-hail__notice-icon {
+    width: 25px;
+    height: 25px;
+
+    display: grid;
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--color-copper);
+    color: var(--color-white);
+
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.storm-hail__notice strong {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+}
+
+.storm-hail__notice p {
+    margin-top: 0.2rem;
+
+    color: rgba(255, 255, 255, 0.5);
+
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 950px) {
+    .storm-hail {
+        grid-template-columns: 1fr;
+    }
+
+    .storm-hail__visual {
+        min-height: 400px;
+    }
+
+    .storm-hail__content {
+        max-width: none;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+    .storm-hail__visual {
+        min-height: 300px;
+    }
+
+    .storm-hail__content {
+        padding: 4rem 1.25rem;
+    }
+
+    .storm-hail__actions {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .storm-hail__actions .button {
+        width: 100%;
+    }
+
+    .storm-hail__damage-list {
+        margin-top: 3rem;
+    }
+
+    .storm-hail__notice {
+        padding: 1rem;
+    }
+}

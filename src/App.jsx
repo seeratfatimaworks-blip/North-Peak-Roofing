@@ -4,6 +4,7 @@ import Hero from "./components/home/Hero";
 import TrustIndicators from "./components/home/TrustIndicators";
 import ProblemSolution from "./components/home/ProblemSolution";
 import Services from "./components/home/Services";
+import StormHailSection from "./components/home/StormHailSection";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <ProblemSolution />
 
         <Services />
+
+        <StormHailSection />
 
       </main>
     </div>

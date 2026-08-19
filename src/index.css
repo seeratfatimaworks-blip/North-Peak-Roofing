@@ -12,6 +12,9 @@
 @import "./components/home/TrustIndicators.css";
 @import "./components/home/ProblemSolution.css";
 
+@import "./components/home/Services.css";
+@import "./components/home/ServiceCard.css";
+
 :root {
   /* Colors */
   --color-charcoal: #111315;

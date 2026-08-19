@@ -3,6 +3,7 @@ import Navbar from "./components/layout/Navbar";
 import Hero from "./components/home/Hero";
 import TrustIndicators from "./components/home/TrustIndicators";
 import ProblemSolution from "./components/home/ProblemSolution";
+import Services from "./components/home/Services";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
         <TrustIndicators />
 
         <ProblemSolution />
+
+        <Services />
+
       </main>
     </div>
   );

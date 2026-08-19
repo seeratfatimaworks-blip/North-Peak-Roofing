@@ -1,0 +1,25 @@
+.section-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 760px;
+}
+
+.section-heading .heading-2 {
+    margin-top: 0.15rem;
+}
+
+.section-heading .body-large {
+    max-width: 650px;
+    color: var(--color-muted);
+}
+
+.section-heading--center {
+    margin-inline: auto;
+    align-items: center;
+    text-align: center;
+}
+
+.section-heading--center .body-large {
+    margin-inline: auto;
+}

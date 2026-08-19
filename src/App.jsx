@@ -1,52 +1,50 @@
-import Container from "./components/ui/Container";
-import Button from "./components/ui/Button";
-import SectionHeading from "./components/ui/SectionHeading";
-import Badge from "./components/ui/Badge";
-import siteConfig from "./config/siteConfig";
+import AnnouncementBar from "./components/layout/AnnouncementBar";
+import Navbar from "./components/layout/Navbar";
 
 function App() {
   return (
-    <main>
-      <section className="section">
-        <Container>
-          <div style={{ display: "grid", gap: "2rem" }}>
-            <div>
-              <span className="eyebrow">NorthPeak Roofing</span>
+    <div id="top">
+      <AnnouncementBar />
+      <Navbar />
 
-              <h1 className="display">
-                {siteConfig.businessName}
-              </h1>
+      <main>
+        <section
+          style={{
+            minHeight: "70vh",
+            display: "grid",
+            placeItems: "center",
+            padding: "4rem 1.25rem",
+            textAlign: "center",
+          }}
+        >
+          <div>
+            <span className="eyebrow">
+              NorthPeak Roofing Co.
+            </span>
 
-              <p className="body-large">
-                {siteConfig.tagline}
-              </p>
-            </div>
+            <h1
+              className="display"
+              style={{ marginTop: "1rem" }}
+            >
+              Built to Protect
+              <br />
+              What Matters.
+            </h1>
 
-            <SectionHeading
-              eyebrow="Design System"
-              title="A premium foundation for the NorthPeak website."
-              description="This temporary preview confirms that our typography, spacing, colors, and reusable UI components are working correctly."
-            />
-
-            <div
+            <p
+              className="body-large"
               style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "1rem",
+                maxWidth: "600px",
+                margin: "1.5rem auto 0",
+                color: "var(--color-muted)",
               }}
             >
-              <Button>Get Free Roof Inspection</Button>
-
-              <Button variant="secondary">
-                Call NorthPeak
-              </Button>
-
-              <Badge>Storm Damage</Badge>
-            </div>
+              Premium roofing services for Denver homeowners.
+            </p>
           </div>
-        </Container>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div>
   );
 }
 

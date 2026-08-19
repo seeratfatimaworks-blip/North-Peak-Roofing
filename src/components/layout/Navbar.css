@@ -1,0 +1,227 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+
+    width: 100%;
+
+    background: rgba(245, 243, 238, 0.96);
+    border-bottom: 1px solid var(--border-light);
+
+    backdrop-filter: blur(12px);
+}
+
+.navbar__inner {
+    width: min(100% - (var(--container-padding) * 2),
+            var(--container-width));
+
+    min-height: 82px;
+    margin-inline: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 2rem;
+}
+
+/* =========================
+   BRAND
+========================= */
+
+.navbar__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    flex-shrink: 0;
+}
+
+.navbar__mark {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--color-charcoal);
+    color: var(--color-white);
+
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 800;
+
+    transform: skew(-8deg);
+}
+
+.navbar__brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.navbar__brand-name {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.navbar__brand-type {
+    margin-top: 0.25rem;
+
+    color: var(--color-muted);
+
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+/* =========================
+   DESKTOP NAV
+========================= */
+
+.navbar__desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 2rem);
+
+    margin-left: auto;
+}
+
+.navbar__desktop-nav a {
+    position: relative;
+
+    padding-block: 0.5rem;
+
+    color: var(--color-charcoal);
+
+    font-size: 0.82rem;
+    font-weight: 600;
+
+    transition: color var(--transition-fast);
+}
+
+.navbar__desktop-nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--color-copper);
+
+    transition: width var(--transition-normal);
+}
+
+.navbar__desktop-nav a:hover {
+    color: var(--color-copper);
+}
+
+.navbar__desktop-nav a:hover::after {
+    width: 100%;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.navbar__desktop-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    flex-shrink: 0;
+}
+
+.navbar__phone {
+    color: var(--color-charcoal);
+
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition: color var(--transition-fast);
+}
+
+.navbar__phone:hover {
+    color: var(--color-copper);
+}
+
+/* =========================
+   MOBILE BUTTON
+========================= */
+
+.navbar__menu-button {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 0;
+    border: 0;
+
+    background: transparent;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.navbar__menu-button span {
+    display: block;
+
+    width: 22px;
+    height: 2px;
+
+    background: var(--color-charcoal);
+
+    transition:
+        transform var(--transition-normal),
+        opacity var(--transition-normal);
+}
+
+.navbar__menu-button--open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__menu-button--open span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar__menu-button--open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1050px) {
+    .navbar__desktop-nav {
+        gap: 1rem;
+    }
+
+    .navbar__phone {
+        display: none;
+    }
+}
+
+@media (max-width: 850px) {
+
+    .navbar__desktop-nav,
+    .navbar__desktop-actions {
+        display: none;
+    }
+
+    .navbar__menu-button {
+        display: flex;
+    }
+}

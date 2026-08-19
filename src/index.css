@@ -4,6 +4,10 @@
 @import "./components/ui/SectionHeading.css";
 @import "./components/ui/Badge.css";
 
+@import "./components/layout/AnnouncementBar.css";
+@import "./components/layout/Navbar.css";
+@import "./components/layout/MobileNav.css";
+
 :root {
   /* Colors */
   --color-charcoal: #111315;

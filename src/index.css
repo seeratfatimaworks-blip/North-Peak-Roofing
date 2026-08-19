@@ -23,6 +23,9 @@
 @import "./components/home/ProjectShowcase.css";
 @import "./components/home/BeforeAfterSlider.css";
 
+@import "./components/home/Testimonials.css";
+@import "./components/home/ServiceAreas.css";
+
 :root {
   /* Colors */
   --color-charcoal: #111315;

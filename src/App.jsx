@@ -8,6 +8,8 @@ import StormHailSection from "./components/home/StormHailSection";
 import WhyNorthPeak from "./components/home/WhyNorthPeak";
 import HowItWorks from "./components/home/HowItWorks";
 import ProjectShowcase from "./components/home/ProjectShowcase";
+import Testimonials from "./components/home/Testimonials";
+import ServiceAreas from "./components/home/ServiceAreas";
 
 function App() {
   return (
@@ -32,6 +34,10 @@ function App() {
         <HowItWorks />
 
         <ProjectShowcase />
+
+        <Testimonials />
+
+        <ServiceAreas />
 
       </main>
     </div>

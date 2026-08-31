@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { checkBackend } from "./services/api";
+
 import AnnouncementBar from "./components/layout/AnnouncementBar";
 import Navbar from "./components/layout/Navbar";
 import Hero from "./components/home/Hero";
@@ -17,6 +20,14 @@ import Footer from "./components/layout/Footer";
 import StickyMobileCTA from "./components/layout/StickyMobileCTA";
 
 function App() {
+
+  useEffect(() => {
+    checkBackend().catch((error) => {
+      console.error("BACKEND CONNECTION FAILED:", error);
+    });
+  }, []);
+
+
   return (
     <div id="top">
       <AnnouncementBar />

@@ -1,22 +1,41 @@
 const express = require("express");
+const Lead = require("../models/Lead");
 
 const router = express.Router();
 
-router.post("/", (req, res) => {
-    const { name, email, phone, message } = req.body;
+router.post("/", async (req, res) => {
+    try {
+        const { name, email, phone, message } = req.body;
 
-    if (!name || !email || !phone || !message) {
-        return res.status(400).json({
-            message: "All fields are required."
+        // Validation
+        if (!name || !email || !phone || !message) {
+            return res.status(400).json({
+                message: "All fields are required."
+            });
+        }
+
+        // Save lead to MongoDB
+        const newLead = await Lead.create({
+            name,
+            email,
+            phone,
+            message
+        });
+
+        console.log("New lead saved:", newLead);
+
+        res.status(201).json({
+            message: "Lead received successfully!",
+            lead: newLead
+        });
+
+    } catch (error) {
+        console.error("Error saving lead:", error);
+
+        res.status(500).json({
+            message: "Something went wrong."
         });
     }
-
-    console.log(req.body);
-
-    res.status(201).json({
-        message: "Lead received successfully!",
-        lead: req.body
-    });
 });
 
 module.exports = router;

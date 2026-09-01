@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
     try {
-        const { name, email, phone, message } = req.body;
+        const { name, email, phone, address, service, message } = req.body;
 
         // Validation
         if (!name || !email || !phone || !message) {
@@ -19,6 +19,8 @@ router.post("/", async (req, res) => {
             name,
             email,
             phone,
+            address,
+            service,
             message
         });
 

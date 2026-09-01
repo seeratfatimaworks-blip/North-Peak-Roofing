@@ -20,6 +20,18 @@ const leadSchema = new mongoose.Schema(
             trim: true
         },
 
+        address: {
+            type: String,
+            required: true,
+            trim: true
+        },
+
+        service: {
+            type: String,
+            required: true,
+            trim: true
+        },
+
         message: {
             type: String,
             required: true,

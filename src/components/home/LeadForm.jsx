@@ -14,6 +14,7 @@ function LeadForm() {
     const [formData, setFormData] = useState(initialFormData);
     const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
+    const [submitError, setSubmitError] = useState("");
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -27,6 +28,8 @@ function LeadForm() {
             ...current,
             [name]: "",
         }));
+
+        setSubmitError("");
     }
 
     function validateForm() {
@@ -64,6 +67,8 @@ function LeadForm() {
     async function handleSubmit(event) {
         event.preventDefault();
 
+        setSubmitError("");
+
         const validationErrors = validateForm();
 
         if (Object.keys(validationErrors).length > 0) {
@@ -93,6 +98,7 @@ function LeadForm() {
             setErrors({});
         } catch (error) {
             console.error("Lead submission failed:", error);
+            setSubmitError("Something went wrong. Please try again.");
         }
     }
 
@@ -255,6 +261,12 @@ function LeadForm() {
                                     onChange={handleChange}
                                 />
                             </div>
+
+                            {submitError && (
+                                <p className="form-field__error">
+                                    {submitError}
+                                </p>
+                            )}
 
                             <button
                                 type="submit"

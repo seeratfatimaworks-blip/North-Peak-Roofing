@@ -5,8 +5,10 @@
 .faq__inner {
     width: min(100% - (var(--container-padding) * 2),
             var(--container-width));
+
     margin-inline: auto;
-    padding-block: var(--space-5xl);
+
+    padding-block: var(--space-4xl);
 
     display: grid;
     grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
@@ -14,6 +16,7 @@
     gap: clamp(3rem, 8vw, 7rem);
 
     align-items: start;
+
 }
 
 /* =========================
@@ -22,19 +25,16 @@ HEADING
 
 .faq__heading {
     position: sticky;
-    top: 110px;
-}
-
-.faq__heading .eyebrow {
-    color: var(--color-copper);
+    top: 120px;
 }
 
 .faq__heading h2 {
-    margin-top: 1rem;
-
     max-width: 500px;
 
+    margin-top: 1rem;
+
     color: var(--color-charcoal);
+
 }
 
 .faq__heading p {
@@ -44,7 +44,7 @@ HEADING
 
     color: var(--color-muted);
 
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.75;
 
 }
@@ -61,7 +61,7 @@ FAQ LIST
 
     background: var(--color-white);
 
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 8px 30px rgba(17, 19, 21, 0.05);
 
 }
 
@@ -80,8 +80,8 @@ FAQ ITEM
     border-bottom: 0;
 }
 
-.faq-item:hover {
-    background: var(--color-warm-white);
+.faq-item--open {
+    background: #faf8f4;
 }
 
 /* =========================
@@ -152,19 +152,16 @@ ICON
     transition:
         background var(--transition-fast),
         border-color var(--transition-fast),
-        color var(--transition-fast),
-        transform var(--transition-fast);
+        color var(--transition-fast);
 
 }
 
-.faq-item__question:hover .faq-item__icon {
+.faq-item--open .faq-item__icon {
     border-color: var(--color-copper);
 
     background: var(--color-copper);
 
     color: var(--color-white);
-
-    transform: rotate(90deg);
 
 }
 
@@ -191,7 +188,6 @@ RESPONSIVE
 ========================= */
 
 @media (max-width: 900px) {
-
     .faq__inner {
         grid-template-columns: 1fr;
 
@@ -214,9 +210,8 @@ RESPONSIVE
 }
 
 @media (max-width: 600px) {
-
     .faq__inner {
-        padding-block: var(--space-4xl);
+        padding-block: 4rem;
 
         gap: 2.5rem;
     }

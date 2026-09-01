@@ -83,7 +83,7 @@ function ProblemSolution() {
                     </div>
 
                     <div className="problem-solution__action">
-                        <Button href="#contact">
+                        <Button href="#lead-form">
                             Schedule a Free Inspection
                         </Button>
                     </div>

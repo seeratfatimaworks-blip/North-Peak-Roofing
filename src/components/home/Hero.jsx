@@ -29,7 +29,7 @@ function Hero() {
                     </p>
 
                     <div className="hero__actions">
-                        <Button href="#contact">
+                        <Button href="#lead-form">
                             Get Your Free Inspection
                         </Button>
 

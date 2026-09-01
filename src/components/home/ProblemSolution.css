@@ -1,44 +1,61 @@
 .problem-solution {
-    background: var(--color-white);
+    background: var(--color-warm-white);
+    border-top: 1px solid var(--border-light);
+
 }
 
 .problem-solution__inner {
     width: min(100% - (var(--container-padding) * 2),
             var(--container-width));
-
     margin-inline: auto;
+
+    padding-block: var(--space-4xl);
 
     display: grid;
     grid-template-columns: 0.9fr 1.1fr;
 
-    gap: clamp(4rem, 9vw, 9rem);
+    gap: clamp(3rem, 8vw, 7rem);
 
-    padding-block: var(--space-4xl);
+    align-items: start;
+
 }
 
 /* =========================
-   PROBLEM
+PROBLEM
 ========================= */
 
 .problem-solution__problem {
-    align-self: center;
+    padding: clamp(1.75rem, 4vw, 3rem);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+
+    background: var(--color-white);
+
+    box-shadow:
+        0 12px 35px rgba(17, 19, 21, 0.05);
+
 }
 
 .problem-solution__problem h2 {
     margin-top: 1rem;
-    max-width: 540px;
+    color: var(--color-charcoal);
+
 }
 
 .problem-solution__problem>p {
     max-width: 500px;
-
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
 
     color: var(--color-muted);
 
-    font-size: 1rem;
+    font-size: 0.9rem;
     line-height: 1.75;
+
 }
+
+/* =========================
+PROBLEM LIST
+========================= */
 
 .problem-solution__list {
     display: flex;
@@ -46,6 +63,9 @@
     gap: 0;
 
     margin-top: 2rem;
+
+    border-top: 1px solid var(--border-light);
+
 }
 
 .problem-solution__list li {
@@ -55,117 +75,201 @@
 
     padding-block: 1rem;
 
-    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
 
     color: var(--color-charcoal);
 
-    font-size: 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+
 }
 
-.problem-solution__list li:last-child {
-    border-bottom: 1px solid var(--border-light);
-}
+/* =========================
+PROBLEM ICON
+========================= */
 
 .problem-solution__icon {
-    width: 24px;
-    height: 24px;
+    flex: 0 0 auto;
+    width: 27px;
+    height: 27px;
 
     display: grid;
     place-items: center;
 
-    flex-shrink: 0;
+    border-radius: 50%;
+
+    background: rgba(17, 19, 21, 0.06);
+
+    color: var(--color-muted);
+
+    font-size: 1rem;
+    font-weight: 400;
+
+}
+
+/* =========================
+SOLUTION
+========================= */
+
+.problem-solution__solution {
+    padding-top: 0.5rem;
+}
+
+/* =========================
+SOLUTION POINTS
+========================= */
+
+.problem-solution__points {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5rem;
+
+    border-top: 1px solid var(--border-light);
+
+}
+
+.problem-solution__point {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 1.25rem;
+
+    padding-block: 1.5rem;
+
+    border-bottom: 1px solid var(--border-light);
+
+}
+
+.problem-solution__point>span {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
 
     border: 1px solid rgba(201, 107, 50, 0.35);
     border-radius: 50%;
 
     color: var(--color-copper);
 
-    font-size: 0.9rem;
-}
-
-/* =========================
-   SOLUTION
-========================= */
-
-.problem-solution__solution {
-    padding: clamp(2rem, 5vw, 4rem);
-
-    background: var(--color-warm-white);
-}
-
-.problem-solution__points {
-    margin-top: 2.5rem;
-}
-
-.problem-solution__point {
-    display: grid;
-    grid-template-columns: 50px 1fr;
-
-    gap: 1rem;
-
-    padding-block: 1.35rem;
-
-    border-top: 1px solid var(--border-light);
-}
-
-.problem-solution__point:last-child {
-    border-bottom: 1px solid var(--border-light);
-}
-
-.problem-solution__point>span {
-    color: var(--color-copper);
-
     font-family: var(--font-heading);
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.65rem;
+    font-weight: 800;
+
 }
 
 .problem-solution__point h3 {
+    color: var(--color-charcoal);
     font-family: var(--font-heading);
-    font-size: 1.05rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 800;
+
+    line-height: 1.3;
+
 }
 
 .problem-solution__point p {
-    max-width: 460px;
-
+    max-width: 520px;
     margin-top: 0.35rem;
 
     color: var(--color-muted);
 
-    font-size: 0.875rem;
-    line-height: 1.6;
+    font-size: 0.8rem;
+    line-height: 1.7;
+
 }
+
+/* =========================
+HOVER
+========================= */
+
+.problem-solution__point {
+    transition:
+        padding-left var(--transition-fast),
+        background var(--transition-fast);
+}
+
+.problem-solution__point:hover {
+    padding-left: 0.5rem;
+}
+
+.problem-solution__point:hover>span {
+    background: var(--color-copper);
+    color: var(--color-white);
+
+}
+
+/* =========================
+ACTION
+========================= */
 
 .problem-solution__action {
     margin-top: 2rem;
 }
 
 /* =========================
-   RESPONSIVE
+TABLET
 ========================= */
 
 @media (max-width: 850px) {
     .problem-solution__inner {
         grid-template-columns: 1fr;
+
         gap: 3rem;
     }
 
-    .problem-solution__solution {
-        padding: 2rem;
+    .problem-solution__problem {
+        max-width: 700px;
     }
+
+    .problem-solution__solution {
+        max-width: 750px;
+    }
+
 }
 
-@media (max-width: 500px) {
+/* =========================
+MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
     .problem-solution__inner {
         padding-block: 4rem;
+
+        gap: 2.5rem;
     }
 
-    .problem-solution__solution {
+    .problem-solution__problem {
         padding: 1.5rem;
+
+        border-radius: var(--radius-md);
     }
 
-    .problem-solution__action .button {
+    .problem-solution__list {
+        margin-top: 1.5rem;
+    }
+
+    .problem-solution__list li {
+        align-items: flex-start;
+
+        padding-block: 0.9rem;
+    }
+
+    .problem-solution__point {
+        grid-template-columns: 42px 1fr;
+
+        gap: 1rem;
+
+        padding-block: 1.25rem;
+    }
+
+    .problem-solution__point>span {
+        width: 34px;
+        height: 34px;
+    }
+
+    .problem-solution__action>* {
         width: 100%;
     }
+
+
 }

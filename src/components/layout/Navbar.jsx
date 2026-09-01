@@ -54,7 +54,7 @@ function Navbar() {
                             {siteConfig.phone}
                         </a>
 
-                        <Button href="#contact">
+                        <Button href="#lead-form">
                             Get Free Inspection
                         </Button>
                     </div>

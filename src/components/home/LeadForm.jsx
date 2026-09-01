@@ -61,7 +61,7 @@ function LeadForm() {
         return newErrors;
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
 
         const validationErrors = validateForm();
@@ -72,10 +72,28 @@ function LeadForm() {
             return;
         }
 
-        console.log("Demo lead submitted:", formData);
+        try {
+            const response = await fetch("http://localhost:5000/api/leads", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            });
 
-        setSubmitted(true);
-        setErrors({});
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || "Something went wrong.");
+            }
+
+            console.log("Lead saved:", data);
+
+            setSubmitted(true);
+            setErrors({});
+        } catch (error) {
+            console.error("Lead submission failed:", error);
+        }
     }
 
     return (
@@ -145,8 +163,8 @@ function LeadForm() {
                                 {leadFormFields.map((field) => (
                                     <div
                                         className={`form-field ${field.name === "address"
-                                                ? "form-field--full"
-                                                : ""
+                                            ? "form-field--full"
+                                            : ""
                                             }`}
                                         key={field.name}
                                     >

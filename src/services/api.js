@@ -11,7 +11,7 @@ export async function checkBackend() {
         throw new Error(`Backend returned ${response.status}`);
     }
 
-    const data = await response.json();
+    const data = await response.text();
 
     console.log("Backend data:", data);
 

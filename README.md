@@ -1,55 +1,16 @@
-# NorthPeak Roofing
+# React + Vite
 
-A modern roofing company website with a React frontend and Express backend.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Tech Stack
+Currently, two official plugins are available:
 
-* React
-* Vite
-* JavaScript
-* Node.js
-* Express.js
-* MongoDB
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Project Structure
+## React Compiler
 
-```text
-NorthPeak-Roofing/
-├── src/        # Frontend
-├── server/     # Backend
-└── README.md   # Project documentation
-```
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Running the Project
+## Expanding the ESLint configuration
 
-### Frontend
-
-```bash
-npm run dev
-```
-
-Frontend runs on:
-
-```text
-http://localhost:5173
-```
-
-### Backend
-
-```bash
-npm run server
-```
-
-Backend runs on:
-
-```text
-http://localhost:5000
-```
-
-## Current Status
-
-* React frontend working
-* Express backend working
-* Frontend connected to backend
-* Lead-generation functionality in development
-* Database integration to be added
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

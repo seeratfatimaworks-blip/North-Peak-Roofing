@@ -1,44 +1,33 @@
 .service-card {
     position: relative;
 
-    min-height: 360px;
+    min-height: 390px;
 
     display: flex;
     flex-direction: column;
 
-    padding: 1.75rem;
+    padding: 2rem;
 
     border: 1px solid var(--border-light);
-    border-radius: var(--radius-lg);
 
     background: var(--color-white);
 
-    box-shadow:
-        0 8px 30px rgba(17, 19, 21, 0.04);
-
     transition:
         transform var(--transition-normal),
-        box-shadow var(--transition-normal),
-        border-color var(--transition-normal);
-
+        border-color var(--transition-normal),
+        box-shadow var(--transition-normal);
 }
-
-/* =========================
-HOVER
-========================= */
 
 .service-card:hover {
     transform: translateY(-5px);
 
-    border-color: rgba(201, 107, 50, 0.28);
+    border-color: rgba(201, 107, 50, 0.35);
 
-    box-shadow:
-        0 18px 45px rgba(17, 19, 21, 0.08);
-
+    box-shadow: 0 20px 50px rgba(17, 19, 21, 0.08);
 }
 
 /* =========================
-TOP
+   TOP
 ========================= */
 
 .service-card__top {
@@ -51,20 +40,14 @@ TOP
     color: var(--color-copper);
 
     font-family: var(--font-heading);
-    font-size: 0.7rem;
-    font-weight: 800;
-
+    font-size: 0.75rem;
+    font-weight: 700;
     letter-spacing: 0.08em;
-
 }
 
-/* =========================
-ARROW
-========================= */
-
 .service-card__arrow {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
 
     display: grid;
     place-items: center;
@@ -72,153 +55,97 @@ ARROW
     border: 1px solid var(--border-light);
     border-radius: 50%;
 
-    color: var(--color-muted);
+    color: var(--color-charcoal);
 
     font-size: 1rem;
 
     transition:
-        background var(--transition-fast),
-        border-color var(--transition-fast),
-        color var(--transition-fast),
-        transform var(--transition-fast);
-
+        background-color var(--transition-normal),
+        color var(--transition-normal),
+        transform var(--transition-normal);
 }
 
 .service-card:hover .service-card__arrow {
-    background: rgba(201, 107, 50, 0.08);
-
-    border-color: rgba(201, 107, 50, 0.3);
-
-    color: var(--color-copper);
+    background: var(--color-copper);
+    color: var(--color-white);
 
     transform: translate(2px, -2px);
-
 }
 
 /* =========================
-CONTENT
+   CONTENT
 ========================= */
 
 .service-card__content {
-    margin-top: 3rem;
+    margin-top: auto;
+    padding-top: 4rem;
 }
 
 .service-card__content h3 {
-    max-width: 320px;
-
-    color: var(--color-charcoal);
+    max-width: 300px;
 
     font-family: var(--font-heading);
-    font-size: clamp(1.35rem, 2vw, 1.65rem);
-    font-weight: 800;
-
-    line-height: 1.2;
+    font-size: 1.55rem;
+    font-weight: 700;
+    line-height: 1.15;
     letter-spacing: -0.025em;
-
 }
 
 .service-card__content p {
-    max-width: 360px;
+    max-width: 320px;
 
-    margin-top: 0.85rem;
+    margin-top: 0.9rem;
 
     color: var(--color-muted);
 
-    font-size: 0.82rem;
-    line-height: 1.75;
-
+    font-size: 0.875rem;
+    line-height: 1.65;
 }
 
 /* =========================
-FEATURES
+   FEATURES
 ========================= */
 
 .service-card__features {
     display: flex;
     flex-direction: column;
-
     gap: 0.6rem;
 
-    margin-top: auto;
-    padding-top: 2rem;
+    margin-top: 2rem;
+    padding-top: 1.25rem;
 
+    border-top: 1px solid var(--border-light);
 }
 
 .service-card__features li {
     display: flex;
     align-items: center;
-
     gap: 0.6rem;
 
-    color: var(--color-charcoal);
+    color: var(--color-muted);
 
-    font-size: 0.72rem;
-    font-weight: 600;
-
+    font-size: 0.75rem;
 }
 
 .service-card__features li span {
-    width: 20px;
-    height: 20px;
-
-    display: grid;
-    place-items: center;
-
-    flex: 0 0 auto;
-
-    border-radius: 50%;
-
-    background: rgba(201, 107, 50, 0.09);
-
     color: var(--color-copper);
 
-    font-size: 0.8rem;
-    font-weight: 500;
-
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 /* =========================
-TABLET
-========================= */
-
-@media (max-width: 850px) {
-
-    .service-card {
-        min-height: 330px;
-    }
-
-    .service-card__content {
-        margin-top: 2.5rem;
-    }
-
-
-}
-
-/* =========================
-MOBILE
+   MOBILE
 ========================= */
 
 @media (max-width: 600px) {
-
     .service-card {
-        min-height: 320px;
+        min-height: 340px;
 
         padding: 1.5rem;
-
-        border-radius: var(--radius-md);
     }
 
     .service-card__content {
-        margin-top: 2.25rem;
+        padding-top: 3rem;
     }
-
-    .service-card__content h3 {
-        font-size: 1.3rem;
-    }
-
-    .service-card__features {
-        padding-top: 1.5rem;
-    }
-
-
 }

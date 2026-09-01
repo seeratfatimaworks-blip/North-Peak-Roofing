@@ -48,7 +48,7 @@ function HowItWorks() {
                 </div>
 
                 <div className="how-it-works__action">
-                    <Button href="#lead-form">
+                    <Button href="#contact">
                         Start With a Free Inspection
                     </Button>
                 </div>

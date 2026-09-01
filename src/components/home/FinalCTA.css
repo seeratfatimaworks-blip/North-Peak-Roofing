@@ -3,33 +3,24 @@
 
     overflow: hidden;
 
-    background: var(--color-white);
+    background: var(--color-charcoal);
 
-    border-top: 1px solid var(--border-light);
-
+    color: var(--color-white);
 }
-
-/* =========================
-SUBTLE BACKGROUND DETAIL
-========================= */
 
 .final-cta::before {
     content: "";
 
     position: absolute;
-    inset: 0;
 
-    background-image:
-        linear-gradient(90deg,
-            rgba(17, 19, 21, 0.035) 1px,
-            transparent 1px),
-        linear-gradient(rgba(17, 19, 21, 0.035) 1px,
-            transparent 1px);
+    width: 500px;
+    height: 500px;
 
-    background-size: 80px 80px;
+    top: -250px;
+    right: -150px;
 
-    pointer-events: none;
-
+    border: 1px solid rgba(201, 107, 50, 0.2);
+    border-radius: 50%;
 }
 
 .final-cta::after {
@@ -37,169 +28,92 @@ SUBTLE BACKGROUND DETAIL
 
     position: absolute;
 
-    width: 420px;
-    height: 420px;
+    width: 350px;
+    height: 350px;
 
-    top: -220px;
-    right: -120px;
+    bottom: -220px;
+    left: -100px;
 
-    border: 1px solid rgba(201, 107, 50, 0.14);
+    border: 1px solid rgba(201, 107, 50, 0.15);
     border-radius: 50%;
-
-    pointer-events: none;
-
 }
-
-/* =========================
-INNER
-========================= */
 
 .final-cta__inner {
     position: relative;
     z-index: 1;
 
     width: min(100% - (var(--container-padding) * 2),
-            900px);
+            850px);
 
     margin-inline: auto;
 
     padding-block: clamp(5rem, 10vw, 8rem);
 
     text-align: center;
-
 }
 
-/* =========================
-EYEBROW
-========================= */
-
-.final-cta__inner .eyebrow {
-    color: var(--color-copper);
+.final-cta .eyebrow {
+    color: #e6a273;
 }
 
-/* =========================
-HEADING
-========================= */
-
-.final-cta__inner h2 {
+.final-cta h2 {
     max-width: 750px;
 
     margin: 1rem auto 0;
 
-    color: var(--color-charcoal);
+    color: var(--color-white);
 
     font-family: var(--font-heading);
-    font-size: clamp(2.4rem, 5vw, 4.5rem);
-    font-weight: 800;
-    line-height: 1.02;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 0.98;
     letter-spacing: -0.045em;
-
 }
 
-/* =========================
-DESCRIPTION
-========================= */
-
-.final-cta__inner p {
-    max-width: 620px;
+.final-cta__inner>p {
+    max-width: 570px;
 
     margin: 1.5rem auto 0;
 
-    color: var(--color-muted);
+    color: rgba(255, 255, 255, 0.55);
 
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.75;
-
 }
-
-/* =========================
-ACTIONS
-========================= */
 
 .final-cta__actions {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    gap: 1.25rem;
+    gap: 1.5rem;
 
-    margin-top: 2rem;
-
+    margin-top: 2.5rem;
 }
 
-/* =========================
-PHONE
-========================= */
-
 .final-cta__phone {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    color: rgba(255, 255, 255, 0.8);
 
-    min-height: 48px;
-
-    padding-inline: 1.25rem;
-
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-md);
-
-    background: var(--color-white);
-
-    color: var(--color-charcoal);
-
-    font-family: var(--font-heading);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
 
-    transition:
-        color var(--transition-fast),
-        border-color var(--transition-fast),
-        background var(--transition-fast),
-        transform var(--transition-fast);
+    text-decoration: none;
 
+    transition: color var(--transition-fast);
 }
 
 .final-cta__phone:hover {
-    border-color: var(--color-copper);
-
-    background: var(--color-warm-white);
-
-    color: var(--color-copper);
-
-    transform: translateY(-2px);
-
+    color: #e6a273;
 }
 
-/* =========================
-RESPONSIVE
-========================= */
-
 @media (max-width: 600px) {
-    .final-cta__inner {
-        padding-block: 5rem;
-    }
-
-    .final-cta__inner h2 {
-        font-size: clamp(2.2rem, 10vw, 3.2rem);
-    }
-
-    .final-cta__inner p {
-        font-size: 0.9rem;
-    }
-
     .final-cta__actions {
         flex-direction: column;
 
-        width: 100%;
-
-        gap: 0.75rem;
+        gap: 1.25rem;
     }
 
-    .final-cta__actions>* {
-        width: 100%;
-    }
-
-    .final-cta__phone {
+    .final-cta__actions .button {
         width: 100%;
     }
 }

@@ -1,5 +1,6 @@
-import { useEffect } from "react";
-import { checkBackend } from "./services/api";
+import { useEffect, useState } from "react";
+import { loginUser, checkBackend } from "./services/api";
+
 
 import AnnouncementBar from "./components/layout/AnnouncementBar";
 import Navbar from "./components/layout/Navbar";
@@ -21,12 +22,31 @@ import StickyMobileCTA from "./components/layout/StickyMobileCTA";
 
 function App() {
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+
   useEffect(() => {
     checkBackend().catch((error) => {
       console.error("BACKEND CONNECTION FAILED:", error);
     });
   }, []);
 
+  async function handleLogin(event) {
+    event.preventDefault();
+
+    try {
+      const data = await loginUser(email, password);
+
+      console.log("Login response:", data);
+
+      setMessage("Login successful!");
+    } catch (error) {
+      console.error("Login error:", error);
+
+      setMessage(error.message);
+    }
+  }
 
   return (
     <div id="top">
@@ -36,6 +56,28 @@ function App() {
 
       <main>
         <Hero />
+
+        <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+
+          <button type="submit">
+            Login
+          </button>
+
+          <p>{message}</p>
+        </form>
 
         <TrustIndicators />
 

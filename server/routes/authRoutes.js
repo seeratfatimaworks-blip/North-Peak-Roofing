@@ -1,6 +1,11 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
+
+const jwt = require("jsonwebtoken");
+
 const User = require("../models/User");
+
+const protect = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
@@ -91,20 +96,56 @@ router.post("/login", async (req, res) => {
             });
         }
 
-        // 4. Login successful
+        // 4. Create JWT
+        const token = jwt.sign(
+            {
+                userId: user._id,
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: "1d",
+            }
+        );
+
+        // 5. Login successful
         res.status(200).json({
             message: "Login successful",
+            token,
             user: {
                 id: user._id,
                 name: user.name,
                 email: user.email,
             },
         });
+
     } catch (error) {
         console.error("Login error:", error);
 
         res.status(500).json({
             message: "Server error during login",
+        });
+    }
+});
+
+router.get("/profile", protect, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.userId).select("-password");
+
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found",
+            });
+        }
+
+        res.status(200).json({
+            message: "Protected route accessed successfully",
+            user,
+        });
+    } catch (error) {
+        console.error("Profile error:", error);
+
+        res.status(500).json({
+            message: "Server error",
         });
     }
 });

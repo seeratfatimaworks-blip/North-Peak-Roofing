@@ -35,7 +35,7 @@ function MobileNav({ isOpen, onClose }) {
             >
                 <div className="mobile-nav__header">
                     <div className="mobile-nav__title">
-                        NorthPeak
+                        NorthPeak Roofing
                     </div>
 
                     <button
@@ -80,7 +80,7 @@ function MobileNav({ isOpen, onClose }) {
                         <strong>{siteConfig.phone}</strong>
                     </a>
 
-                    <Button href="#contact" onClick={handleLinkClick}>
+                    <Button href="#lead-form" onClick={handleLinkClick}>
                         Get Free Inspection
                     </Button>
                 </div>

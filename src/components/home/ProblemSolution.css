@@ -69,18 +69,15 @@
 .problem-solution__icon {
     width: 24px;
     height: 24px;
-
     display: grid;
     place-items: center;
-
     flex-shrink: 0;
-
+    padding: 0;
     border: 1px solid rgba(201, 107, 50, 0.35);
     border-radius: 50%;
-
     color: var(--color-copper);
-
     font-size: 0.9rem;
+    line-height: 1;
 }
 
 /* =========================
@@ -100,11 +97,8 @@
 .problem-solution__point {
     display: grid;
     grid-template-columns: 50px 1fr;
-
     gap: 1rem;
-
     padding-block: 1.35rem;
-
     border-top: 1px solid var(--border-light);
 }
 
@@ -116,7 +110,7 @@
     color: var(--color-copper);
 
     font-family: var(--font-heading);
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-weight: 700;
 }
 

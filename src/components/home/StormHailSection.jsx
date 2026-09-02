@@ -39,7 +39,7 @@ function StormHailSection() {
                     </p>
 
                     <div className="storm-hail__actions">
-                        <Button href="#contact">
+                        <Button href="#lead-form">
                             Get a Free Storm Inspection
                         </Button>
 

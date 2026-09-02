@@ -32,12 +32,12 @@ function HowItWorks() {
                             <div className="process-step__top">
                                 <span>{step.number}</span>
 
-                                {index < processSteps.length - 1 && (
-                                    <span
-                                        className="process-step__line"
-                                        aria-hidden="true"
-                                    />
-                                )}
+
+                                <span
+                                    className="process-step__line"
+                                    aria-hidden="true"
+                                />
+
                             </div>
 
                             <h3>{step.title}</h3>

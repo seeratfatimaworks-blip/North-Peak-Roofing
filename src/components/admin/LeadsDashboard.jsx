@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getLeads } from "../../services/api";
-
+import "./LeadsDashboard.css";
 function LeadsDashboard() {
     const [leads, setLeads] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -23,48 +23,116 @@ function LeadsDashboard() {
     }, []);
 
     if (loading) {
-        return <p>Loading leads...</p>;
+        return (
+            <section className="admin-dashboard">
+                <div className="admin-dashboard__loading">
+                    Loading leads...
+                </div>
+            </section>
+        );
     }
 
     if (error) {
-        return <p>{error}</p>;
-    }
-
-    if (leads.length === 0) {
-        return <p>No leads found.</p>;
+        return (
+            <section className="admin-dashboard">
+                <div className="admin-dashboard__error">
+                    {error}
+                </div>
+            </section>
+        );
     }
 
     return (
-        <section>
-            <h1>Leads</h1>
-
-            {leads.map((lead) => (
-                <article key={lead._id}>
-                    <h2>{lead.name}</h2>
-
-                    <p>
-                        <strong>Phone:</strong> {lead.phone}
+        <section className="admin-dashboard">
+            <div className="admin-dashboard__header">
+                <div>
+                    <p className="admin-dashboard__eyebrow">
+                        ADMIN DASHBOARD
                     </p>
 
-                    <p>
-                        <strong>Email:</strong> {lead.email}
-                    </p>
+                    <h1>Lead Management</h1>
 
-                    <p>
-                        <strong>Address:</strong> {lead.address}
+                    <p className="admin-dashboard__description">
+                        Manage and track roofing leads submitted through your website.
                     </p>
+                </div>
 
+                <div className="admin-dashboard__count">
+                    <span>{leads.length}</span>
+                    <small>Total Leads</small>
+                </div>
+            </div>
+
+            {leads.length === 0 ? (
+                <div className="admin-dashboard__empty">
+                    <h2>No leads yet</h2>
                     <p>
-                        <strong>Service:</strong> {lead.service}
+                        New customer inquiries will appear here when someone
+                        submits the lead form.
                     </p>
+                </div>
+            ) : (
+                <div className="admin-leads">
+                    {leads.map((lead) => (
+                        <article
+                            className="admin-lead-card"
+                            key={lead._id}
+                        >
+                            <div className="admin-lead-card__top">
+                                <div>
+                                    <span className="admin-lead-card__label">
+                                        CUSTOMER
+                                    </span>
 
-                    <p>
-                        <strong>Message:</strong> {lead.message}
-                    </p>
+                                    <h2>{lead.name}</h2>
+                                </div>
 
-                    <hr />
-                </article>
-            ))}
+                                <span className="admin-lead-card__status">
+                                    New
+                                </span>
+                            </div>
+
+                            <div className="admin-lead-card__details">
+                                <div>
+                                    <span>Phone</span>
+                                    <p>{lead.phone}</p>
+                                </div>
+
+                                <div>
+                                    <span>Email</span>
+                                    <p>{lead.email}</p>
+                                </div>
+
+                                <div>
+                                    <span>Address</span>
+                                    <p>{lead.address}</p>
+                                </div>
+
+                                <div>
+                                    <span>Service</span>
+                                    <p>{lead.service}</p>
+                                </div>
+                            </div>
+
+                            <div className="admin-lead-card__message">
+                                <span>Customer Message</span>
+                                <p>{lead.message}</p>
+                            </div>
+
+                            <div className="admin-lead-card__footer">
+                                <span>
+                                    Submitted{" "}
+                                    {lead.createdAt
+                                        ? new Date(
+                                            lead.createdAt
+                                        ).toLocaleDateString()
+                                        : ""}
+                                </span>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            )}
         </section>
     );
 }

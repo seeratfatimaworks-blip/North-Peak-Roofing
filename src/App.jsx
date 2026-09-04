@@ -19,6 +19,7 @@ import FinalCTA from "./components/home/FinalCTA";
 import LeadForm from "./components/home/LeadForm";
 import Footer from "./components/layout/Footer";
 import StickyMobileCTA from "./components/layout/StickyMobileCTA";
+import LeadsDashboard from "./components/admin/LeadsDashboard";
 
 function App() {
 
@@ -56,7 +57,7 @@ function App() {
 
       <main>
         <Hero />
-
+        <LeadsDashboard />
         <form onSubmit={handleLogin}>
           <input
             type="email"

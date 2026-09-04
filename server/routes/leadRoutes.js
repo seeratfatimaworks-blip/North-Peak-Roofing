@@ -1,5 +1,6 @@
 const express = require("express");
 const Lead = require("../models/Lead");
+const protect = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
@@ -33,6 +34,20 @@ router.post("/", async (req, res) => {
 
     } catch (error) {
         console.error("Error saving lead:", error);
+
+        res.status(500).json({
+            message: "Something went wrong."
+        });
+    }
+});
+
+router.get("/", protect, async (req, res) => {
+    try {
+        const leads = await Lead.find().sort({ createdAt: -1 });
+
+        res.status(200).json(leads);
+    } catch (error) {
+        console.error("Error fetching leads:", error);
 
         res.status(500).json({
             message: "Something went wrong."

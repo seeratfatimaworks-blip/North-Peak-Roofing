@@ -32,6 +32,12 @@ const leadSchema = new mongoose.Schema(
             trim: true
         },
 
+        status: {
+            type: String,
+            enum: ["new", "contacted", "scheduled", "won", "lost"],
+            default: "new"
+        },
+
         message: {
             type: String,
             required: true,

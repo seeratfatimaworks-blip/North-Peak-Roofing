@@ -36,6 +36,8 @@ export async function loginUser(email, password) {
         throw new Error(data.message || "Login failed");
     }
 
+    localStorage.setItem("token", data.token);
+
     return data;
 }
 

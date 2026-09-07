@@ -1,7 +1,17 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getLeads, updateLeadStatus } from "../../services/api";
 import "./LeadsDashboard.css";
+
 function LeadsDashboard() {
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/admin/login");
+    };
+
     const [leads, setLeads] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -73,6 +83,27 @@ function LeadsDashboard() {
 
     return (
         <section className="admin-dashboard">
+
+            <div className="admin-dashboard__nav">
+                <a href="/" className="admin-dashboard__brand">
+                    NORTHPEAK <span>ROOFING</span>
+                </a>
+
+                <div className="admin-dashboard__actions">
+                    <a href="/" className="admin-dashboard__website">
+                        ← Website
+                    </a>
+
+                    <button
+                        type="button"
+                        className="admin-dashboard__logout"
+                        onClick={handleLogout}
+                    >
+                        Logout
+                    </button>
+                </div>
+            </div>
+
             <div className="admin-dashboard__header">
                 <div>
                     <p className="admin-dashboard__eyebrow">

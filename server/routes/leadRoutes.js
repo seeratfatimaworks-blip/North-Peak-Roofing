@@ -55,4 +55,48 @@ router.get("/", protect, async (req, res) => {
     }
 });
 
+router.patch("/:id/status", protect, async (req, res) => {
+    try {
+        const { status } = req.body;
+
+        const allowedStatuses = [
+            "new",
+            "contacted",
+            "scheduled",
+            "won",
+            "lost"
+        ];
+
+        if (!allowedStatuses.includes(status)) {
+            return res.status(400).json({
+                message: "Invalid lead status"
+            });
+        }
+
+        const lead = await Lead.findByIdAndUpdate(
+            req.params.id,
+            { status },
+            { new: true }
+        );
+
+        if (!lead) {
+            return res.status(404).json({
+                message: "Lead not found"
+            });
+        }
+
+        res.json({
+            message: "Lead status updated successfully",
+            lead
+        });
+
+    } catch (error) {
+        console.error("Update lead status error:", error);
+
+        res.status(500).json({
+            message: "Server error"
+        });
+    }
+});
+
 module.exports = router;

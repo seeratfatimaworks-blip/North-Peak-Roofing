@@ -6,24 +6,35 @@ function LeadsDashboard() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [updatingLead, setUpdatingLead] = useState(null);
+
+
     const handleStatusChange = async (leadId, status) => {
+        const previousLeads = leads;
+
+        // Update UI immediately
+        setLeads((currentLeads) =>
+            currentLeads.map((lead) =>
+                lead._id === leadId
+                    ? { ...lead, status }
+                    : lead
+            )
+        );
+
         try {
             setUpdatingLead(leadId);
 
-            const data = await updateLeadStatus(leadId, status);
-
-            setLeads((currentLeads) =>
-                currentLeads.map((lead) =>
-                    lead._id === leadId ? data.lead : lead
-                )
-            );
+            await updateLeadStatus(leadId, status);
         } catch (error) {
             console.error("Failed to update lead status:", error);
+
+            // Revert UI if API request fails
+            setLeads(previousLeads);
             setError("Failed to update lead status.");
         } finally {
             setUpdatingLead(null);
         }
     };
+
     useEffect(() => {
         async function loadLeads() {
             try {

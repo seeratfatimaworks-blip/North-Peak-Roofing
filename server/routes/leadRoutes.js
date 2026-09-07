@@ -9,20 +9,29 @@ router.post("/", async (req, res) => {
         const { name, email, phone, address, service, message } = req.body;
 
         // Validation
+        // Validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
         if (!name || !email || !phone || !message) {
             return res.status(400).json({
                 message: "All fields are required."
             });
         }
 
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({
+                message: "Please provide a valid email address."
+            });
+        }
+
         // Save lead to MongoDB
         const newLead = await Lead.create({
-            name,
-            email,
-            phone,
-            address,
-            service,
-            message
+            name: name.trim(),
+            email: email.trim().toLowerCase(),
+            phone: phone.trim(),
+            address: address?.trim(),
+            service: service?.trim(),
+            message: message.trim()
         });
 
         console.log("New lead saved:", newLead);

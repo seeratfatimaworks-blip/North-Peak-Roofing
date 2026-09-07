@@ -1,0 +1,106 @@
+warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mindex 3b0b403..8d6a032 100644[m
+[1m--- a/.gitignore[m
+[1m+++ b/.gitignore[m
+[36m@@ -23,4 +23,9 @@[m [mdist-ssr[m
+ *.sln[m
+ *.sw?[m
+ [m
+[31m-.env[m
+\ No newline at end of file[m
+[32m+[m[32m.env[m
+[32m+[m[32m.env.local[m
+[32m+[m[32m.env.*.local[m
+[32m+[m
+[32m+[m[32m.env.*[m
+[32m+[m[32m!.env.example[m
+\ No newline at end of file[m
+[1mdiff --git a/server/middleware/authMiddleware.js b/server/middleware/authMiddleware.js[m
+[1mindex 3ada8fb..df5dea6 100644[m
+[1m--- a/server/middleware/authMiddleware.js[m
+[1m+++ b/server/middleware/authMiddleware.js[m
+[36m@@ -4,9 +4,9 @@[m [mconst protect = (req, res, next) => {[m
+     try {[m
+         const authHeader = req.headers.authorization;[m
+ [m
+[31m-        if (!authHeader) {[m
+[32m+[m[32m        if (!authHeader || !authHeader.startsWith("Bearer ")) {[m
+             return res.status(401).json({[m
+[31m-                message: "No authorization header",[m
+[32m+[m[32m                message: "Unauthorized",[m
+             });[m
+         }[m
+ [m
+[36m@@ -14,7 +14,7 @@[m [mconst protect = (req, res, next) => {[m
+ [m
+         if (!token) {[m
+             return res.status(401).json({[m
+[31m-                message: "No token provided",[m
+[32m+[m[32m                message: "Unauthorized",[m
+             });[m
+         }[m
+ [m
+[1mdiff --git a/server/routes/leadRoutes.js b/server/routes/leadRoutes.js[m
+[1mindex 79213da..c4cc091 100644[m
+[1m--- a/server/routes/leadRoutes.js[m
+[1m+++ b/server/routes/leadRoutes.js[m
+[36m@@ -9,20 +9,29 @@[m [mrouter.post("/", async (req, res) => {[m
+         const { name, email, phone, address, service, message } = req.body;[m
+ [m
+         // Validation[m
+[32m+[m[32m        // Validation[m
+[32m+[m[32m        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;[m
+[32m+[m
+         if (!name || !email || !phone || !message) {[m
+             return res.status(400).json({[m
+                 message: "All fields are required."[m
+             });[m
+         }[m
+ [m
+[32m+[m[32m        if (!emailRegex.test(email)) {[m
+[32m+[m[32m            return res.status(400).json({[m
+[32m+[m[32m                message: "Please provide a valid email address."[m
+[32m+[m[32m            });[m
+[32m+[m[32m        }[m
+[32m+[m
+         // Save lead to MongoDB[m
+         const newLead = await Lead.create({[m
+[31m-            name,[m
+[31m-            email,[m
+[31m-            phone,[m
+[31m-            address,[m
+[31m-            service,[m
+[31m-            message[m
+[32m+[m[32m            name: name.trim(),[m
+[32m+[m[32m            email: email.trim().toLowerCase(),[m
+[32m+[m[32m            phone: phone.trim(),[m
+[32m+[m[32m            address: address?.trim(),[m
+[32m+[m[32m            service: service?.trim(),[m
+[32m+[m[32m            message: message.trim()[m
+         });[m
+ [m
+         console.log("New lead saved:", newLead);[m
+[1mdiff --git a/server/server.js b/server/server.js[m
+[1mindex 9be2080..26e7c91 100644[m
+[1m--- a/server/server.js[m
+[1m+++ b/server/server.js[m
+[36m@@ -16,7 +16,7 @@[m [mapp.use(express.json());[m
+ [m
+ app.use("/api/auth", authRoutes);[m
+ [m
+[31m-const PORT = 5000;[m
+[32m+[m[32mconst PORT = process.env.PORT || 5000;[m
+ [m
+ connectDB();[m
+ [m
+[1mdiff --git a/src/services/api.js b/src/services/api.js[m
+[1mindex 63718de..b89a1c7 100644[m
+[1m--- a/src/services/api.js[m
+[1m+++ b/src/services/api.js[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-const API_URL = "http://localhost:5000";[m
+[32m+[m[32mconst API_URL = import.meta.env.VITE_API_URL;[m
+ [m
+ export async function checkBackend() {[m
+     console.log("Trying to connect to:", API_URL);[m

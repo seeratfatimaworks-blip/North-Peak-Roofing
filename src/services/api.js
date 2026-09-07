@@ -58,3 +58,28 @@ export const getLeads = async () => {
 
     return data;
 };
+
+export const updateLeadStatus = async (leadId, status) => {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/api/leads/${leadId}/status`,
+        {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ status }),
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        console.error("STATUS UPDATE ERROR:", response.status, data);
+        alert(`Status update failed: ${response.status} - ${data.message}`);
+        throw new Error(data.message || `Failed with status ${response.status}`);
+    }
+    return data;
+};

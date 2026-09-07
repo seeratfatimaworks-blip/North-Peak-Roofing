@@ -1,19 +1,37 @@
 import { useEffect, useState } from "react";
-import { getLeads } from "../../services/api";
+import { getLeads, updateLeadStatus } from "../../services/api";
 import "./LeadsDashboard.css";
 function LeadsDashboard() {
     const [leads, setLeads] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [updatingLead, setUpdatingLead] = useState(null);
+    const handleStatusChange = async (leadId, status) => {
+        try {
+            setUpdatingLead(leadId);
 
+            const data = await updateLeadStatus(leadId, status);
+
+            setLeads((currentLeads) =>
+                currentLeads.map((lead) =>
+                    lead._id === leadId ? data.lead : lead
+                )
+            );
+        } catch (error) {
+            console.error("Failed to update lead status:", error);
+            setError("Failed to update lead status.");
+        } finally {
+            setUpdatingLead(null);
+        }
+    };
     useEffect(() => {
         async function loadLeads() {
             try {
                 const data = await getLeads();
                 setLeads(data);
             } catch (error) {
-                console.error("Failed to load leads:", error);
-                setError("Failed to load leads.");
+                console.error("Failed to update lead status:", error);
+                setError(error.message);
             } finally {
                 setLoading(false);
             }
@@ -87,9 +105,20 @@ function LeadsDashboard() {
                                     <h2>{lead.name}</h2>
                                 </div>
 
-                                <span className="admin-lead-card__status">
-                                    New
-                                </span>
+                                <select
+                                    className="admin-lead-card__status"
+                                    value={lead.status || "new"}
+                                    onChange={(event) =>
+                                        handleStatusChange(lead._id, event.target.value)
+                                    }
+                                    disabled={updatingLead === lead._id}
+                                >
+                                    <option value="new">New</option>
+                                    <option value="contacted">Contacted</option>
+                                    <option value="scheduled">Scheduled</option>
+                                    <option value="won">Won</option>
+                                    <option value="lost">Lost</option>
+                                </select>
                             </div>
 
                             <div className="admin-lead-card__details">

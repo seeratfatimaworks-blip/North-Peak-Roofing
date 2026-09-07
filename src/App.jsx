@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
-import { loginUser, checkBackend } from "./services/api";
+import ProtectedRoute from "./components/admin/ProtectedRoute";
 
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { checkBackend } from "./services/api";
 
 import AnnouncementBar from "./components/layout/AnnouncementBar";
 import Navbar from "./components/layout/Navbar";
@@ -19,36 +21,11 @@ import FinalCTA from "./components/home/FinalCTA";
 import LeadForm from "./components/home/LeadForm";
 import Footer from "./components/layout/Footer";
 import StickyMobileCTA from "./components/layout/StickyMobileCTA";
+
+import AdminLogin from "./components/admin/AdminLogin";
 import LeadsDashboard from "./components/admin/LeadsDashboard";
 
-function App() {
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    checkBackend().catch((error) => {
-      console.error("BACKEND CONNECTION FAILED:", error);
-    });
-  }, []);
-
-  async function handleLogin(event) {
-    event.preventDefault();
-
-    try {
-      const data = await loginUser(email, password);
-
-      console.log("Login response:", data);
-
-      setMessage("Login successful!");
-    } catch (error) {
-      console.error("Login error:", error);
-
-      setMessage(error.message);
-    }
-  }
-
+function PublicWebsite() {
   return (
     <div id="top">
       <AnnouncementBar />
@@ -57,60 +34,74 @@ function App() {
 
       <main>
         <Hero />
-        <LeadsDashboard />
-        <form onSubmit={handleLogin}>
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-
-          <button type="submit">
-            Login
-          </button>
-
-          <p>{message}</p>
-        </form>
-
         <TrustIndicators />
-
         <Services />
-
         <ProblemSolution />
-
         <StormHailSection />
-
         <WhyNorthPeak />
-
-        <ProjectShowcase />
-
         <HowItWorks />
-
+        <ProjectShowcase />
         <Testimonials />
-
         <ServiceAreas />
-
         <FAQ />
-
         <LeadForm />
-
         <FinalCTA />
-
       </main>
 
       <Footer />
-
       <StickyMobileCTA />
-
     </div>
+  );
+}
+
+function AdminDashboard() {
+  return (
+    <div>
+      <LeadsDashboard />
+    </div>
+  );
+}
+
+function App() {
+  useEffect(() => {
+    checkBackend().catch((error) => {
+      console.error("BACKEND CONNECTION FAILED:", error);
+    });
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <Routes>
+
+        {/* Public client website */}
+        <Route
+          path="/"
+          element={<PublicWebsite />}
+        />
+
+        {/* Admin login */}
+        <Route
+          path="/admin/login"
+          element={<AdminLogin />}
+        />
+
+        {/* Admin dashboard */}
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        {/* Unknown URLs */}
+        <Route
+          path="*"
+          element={<Navigate to="/" replace />}
+        />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 

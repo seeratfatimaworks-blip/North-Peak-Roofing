@@ -5,6 +5,7 @@ import "./AdminLogin.css";
 
 function AdminLogin({ onLoginSuccess }) {
     const navigate = useNavigate();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
@@ -37,73 +38,104 @@ function AdminLogin({ onLoginSuccess }) {
     }
 
     return (
-        <section className="admin-login">
-            <div className="admin-login__card">
-                <div className="admin-login__header">
-                    <p className="admin-login__eyebrow">
-                        NORTHPEAK ROOFING
-                    </p>
+        <main className="admin-login">
+            <div className="admin-login__shell">
 
-                    <h1>Admin Login</h1>
+                <div className="admin-login__brand">
+                    <a href="/" className="admin-login__logo">
+                        NORTHPEAK
+                    </a>
 
-                    <p>
-                        Sign in to manage your roofing leads.
-                    </p>
+                    <span className="admin-login__brand-subtitle">
+                        ROOFING
+                    </span>
                 </div>
 
-                <form
-                    className="admin-login__form"
-                    onSubmit={handleLogin}
-                >
-                    <div className="admin-login__field">
-                        <label htmlFor="admin-email">
-                            Email
-                        </label>
+                <div className="admin-login__card">
 
-                        <input
-                            id="admin-email"
-                            type="email"
-                            placeholder="Enter your email"
-                            value={email}
-                            onChange={(event) =>
-                                setEmail(event.target.value)
-                            }
-                            required
-                        />
-                    </div>
-
-                    <div className="admin-login__field">
-                        <label htmlFor="admin-password">
-                            Password
-                        </label>
-
-                        <input
-                            id="admin-password"
-                            type="password"
-                            placeholder="Enter your password"
-                            value={password}
-                            onChange={(event) =>
-                                setPassword(event.target.value)
-                            }
-                            required
-                        />
-                    </div>
-
-                    <button
-                        type="submit"
-                        disabled={loading}
-                    >
-                        {loading ? "Signing in..." : "Sign In"}
-                    </button>
-
-                    {message && (
-                        <p className="admin-login__message">
-                            {message}
+                    <div className="admin-login__header">
+                        <p className="admin-login__eyebrow">
+                            ADMIN PORTAL
                         </p>
-                    )}
-                </form>
+
+                        <h1>Welcome back.</h1>
+
+                        <p>
+                            Sign in to manage your roofing leads
+                            and inquiries.
+                        </p>
+                    </div>
+
+                    <form
+                        className="admin-login__form"
+                        onSubmit={handleLogin}
+                    >
+                        <div className="admin-login__field">
+                            <label htmlFor="admin-email">
+                                Email address
+                            </label>
+
+                            <input
+                                id="admin-email"
+                                type="email"
+                                placeholder="you@example.com"
+                                value={email}
+                                onChange={(event) =>
+                                    setEmail(event.target.value)
+                                }
+                                required
+                                autoComplete="email"
+                            />
+                        </div>
+
+                        <div className="admin-login__field">
+                            <label htmlFor="admin-password">
+                                Password
+                            </label>
+
+                            <input
+                                id="admin-password"
+                                type="password"
+                                placeholder="Enter your password"
+                                value={password}
+                                onChange={(event) =>
+                                    setPassword(event.target.value)
+                                }
+                                required
+                                autoComplete="current-password"
+                            />
+                        </div>
+
+                        <button
+                            className="admin-login__button"
+                            type="submit"
+                            disabled={loading}
+                        >
+                            {loading ? "Signing in..." : "Sign In"}
+                        </button>
+
+                        {message && (
+                            <p
+                                className={`admin-login__message ${message === "Login successful!"
+                                        ? "admin-login__message--success"
+                                        : "admin-login__message--error"
+                                    }`}
+                            >
+                                {message}
+                            </p>
+                        )}
+                    </form>
+
+                    <a
+                        href="/"
+                        className="admin-login__back"
+                    >
+                        ← Back to NorthPeak Roofing
+                    </a>
+
+                </div>
             </div>
-        </section>
+        </main>
     );
 }
 

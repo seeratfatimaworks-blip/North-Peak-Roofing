@@ -1,11 +1,9 @@
-const express = require("express");
-const bcrypt = require("bcryptjs");
+import express from "express";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
-const jwt = require("jsonwebtoken");
-
-const User = require("../models/User");
-
-const protect = require("../middleware/authMiddleware");
+import User from "../models/User.js";
+import protect from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -13,21 +11,18 @@ router.post("/register", async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
-        // 1. Check required fields
         if (!name || !email || !password) {
             return res.status(400).json({
                 message: "Please provide name, email, and password",
             });
         }
 
-        // 2. Check password length
         if (password.length < 6) {
             return res.status(400).json({
                 message: "Password must be at least 6 characters",
             });
         }
 
-        // 3. Check if user already exists
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {
@@ -36,17 +31,14 @@ router.post("/register", async (req, res) => {
             });
         }
 
-        // 4. Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // 5. Create user
         const user = await User.create({
             name,
             email,
             password: hashedPassword,
         });
 
-        // 6. Send response
         res.status(201).json({
             message: "User registered successfully",
             user: {
@@ -68,14 +60,12 @@ router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // 1. Check required fields
         if (!email || !password) {
             return res.status(400).json({
                 message: "Please provide email and password",
             });
         }
 
-        // 2. Find user
         const user = await User.findOne({ email });
 
         if (!user) {
@@ -84,7 +74,6 @@ router.post("/login", async (req, res) => {
             });
         }
 
-        // 3. Compare password
         const isPasswordCorrect = await bcrypt.compare(
             password,
             user.password
@@ -96,7 +85,6 @@ router.post("/login", async (req, res) => {
             });
         }
 
-        // 4. Create JWT
         const token = jwt.sign(
             {
                 userId: user._id,
@@ -107,7 +95,6 @@ router.post("/login", async (req, res) => {
             }
         );
 
-        // 5. Login successful
         res.status(200).json({
             message: "Login successful",
             token,
@@ -150,4 +137,4 @@ router.get("/profile", protect, async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

@@ -1,13 +1,12 @@
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config({ path: "./server/.env" });
 
-const express = require("express");
-const cors = require("cors");
+import express from "express";
+import cors from "cors";
 
-const authRoutes = require("./routes/authRoutes");
-
-const connectDB = require("./config/db");
-
-const leadRoutes = require("./routes/leadRoutes");
+import authRoutes from "./routes/authRoutes.js";
+import connectDB from "./config/db.js";
+import leadRoutes from "./routes/leadRoutes.js";
 
 const app = express();
 
@@ -16,10 +15,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 
-const PORT = process.env.PORT || 5000;
-
 connectDB();
-
 
 app.get("/", (req, res) => {
     res.json({
@@ -29,10 +25,12 @@ app.get("/", (req, res) => {
 
 app.use("/api/leads", leadRoutes);
 
-if (require.main === module) {
+const PORT = process.env.PORT || 5000;
+
+if (process.env.NODE_ENV !== "production") {
     app.listen(PORT, () => {
         console.log(`Server running on http://localhost:${PORT}`);
     });
 }
 
-module.exports = app;
+export default app;
